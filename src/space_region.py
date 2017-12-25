@@ -6,7 +6,7 @@
 # Each button is handled with by it's own add_to_header_space_id method
 # as there is already a different button for every space  
 #----------------------------------------------------------------------
-# File generated on 2017-12-26 00:00:24
+# File generated on 2017-12-26 00:29:18
 #----------------------------------------------------------------------
 
 import bpy
@@ -28,12 +28,15 @@ except ImportError:
     console_script_is_installed=False
 
 def custom_print(str):
-    if console_script_is_installed==True:
-        ## Use one of the following 2 ways
-        # 1. the exposed Blender operator
+    if "console_write_operator" in dir(bpy.ops.console)
+        # the exposed Blender operator
+        # case of console_scripts registered
         bpy.ops.console.console_write_operator(myString=str)
-        # 2. the python method
-        # console_writer.console_write(str)
+    elif console_script_is_installed==True:
+        # the python method
+        # case of console_scripts existent but not registered
+        # or console_scripts has just been removed
+        console_writer.console_write(str)
     else:
         print(str)
 
